@@ -1,0 +1,50 @@
+body {
+    background-color: #92c7d6;
+    padding: 15px 30px;
+}
+
+input[type="text"] {
+    margin-bottom: 10px;
+}
+
+a.menu-button {
+    padding: 15px;
+    color: #fff;
+}
+
+a.menu-button:hover {
+    text-decoration: none;
+    color: #f0f0f0;
+}
+
+p.hiddenid {
+    display: none !important;
+}
+
+#acknowledge_button {
+    margin-left: 1px;
+    margin-bottom: 40px;
+}
+
+.panel-scroll {
+    max-height: 400px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+#menu-wrapper {
+    padding-bottom: 20px;
+}
+
+.panel-title {
+    padding: 8px;
+}
+
+#center_player_list h4, #pf_player_list h4, #sf_player_list h4, #sg_player_list h4, #pg_player_list h4 {
+    display: inline-block;
+    padding-right: 10px;
+}

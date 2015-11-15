@@ -1,0 +1,102 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://jsonschema.net",
+  "type": "object",
+  "properties": {
+    "players": {
+      "id": "http://jsonschema.net/players",
+      "type": "array",
+      "items": [
+        {
+          "id": "http://jsonschema.net/players/0",
+          "type": "object",
+          "properties": {
+            "id": {
+              "id": "http://jsonschema.net/players/0/id",
+              "type": "string"
+            },
+            "firstname": {
+              "id": "http://jsonschema.net/players/0/firstname",
+              "type": "string"
+            },
+            "lastname": {
+              "id": "http://jsonschema.net/players/0/lastname",
+              "type": "string"
+            },
+            "team": {
+              "id": "http://jsonschema.net/players/0/team",
+              "type": "string"
+            },
+            "leag": {
+              "id": "http://jsonschema.net/players/0/leag",
+              "type": "string"
+            },
+            "pos": {
+              "id": "http://jsonschema.net/players/0/pos",
+              "type": "array",
+              "items": [
+                {
+                  "id": "http://jsonschema.net/players/0/pos/0",
+                  "type": "string"
+                },
+                {
+                  "id": "http://jsonschema.net/players/0/pos/1",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "firstname",
+            "lastname",
+            "team",
+            "leag",
+            "pos"
+          ]
+        },
+        {
+          "id": "http://jsonschema.net/players/1",
+          "type": "object",
+          "properties": {
+            "id": {
+              "id": "http://jsonschema.net/players/1/id",
+              "type": "string"
+            },
+            "firstname": {
+              "id": "http://jsonschema.net/players/1/firstname",
+              "type": "string"
+            },
+            "lastname": {
+              "id": "http://jsonschema.net/players/1/lastname",
+              "type": "string"
+            },
+            "team": {
+              "id": "http://jsonschema.net/players/1/team",
+              "type": "string"
+            },
+            "leag": {
+              "id": "http://jsonschema.net/players/1/leag",
+              "type": "string"
+            },
+            "pos": {
+              "id": "http://jsonschema.net/players/1/pos",
+              "type": "array",
+              "items": {
+                "id": "http://jsonschema.net/players/1/pos/0",
+                "type": "string"
+              }
+            }
+          }
+        }
+      ],
+      "required": [
+        "0",
+        "1"
+      ]
+    }
+  },
+  "required": [
+    "players"
+  ]
+}

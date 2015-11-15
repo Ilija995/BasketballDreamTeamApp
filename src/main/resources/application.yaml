@@ -1,0 +1,12 @@
+server:
+  port: ${port:8090}
+
+spring:
+  view:
+    prefix: /WEB-INF/jsp/
+    suffix: .jsp
+
+environments:
+  filePaths:
+    players: resources/players.json
+    stats: resources/stats.json
