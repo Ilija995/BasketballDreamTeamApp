@@ -1,5 +1,7 @@
 <jsp:directive.include file="header.jsp" />
 
+<jsp:directive.include file="menu.jsp"/>
+
 <form method="POST" action="/ChooseDreamTeam" onsubmit="submitCheck()">
 	<div class="row" style="padding-top: 0.5cm;">
 		<div class="col-sm-12" id="team_name_text_box">
@@ -281,3 +283,5 @@
 </div>
 
 <script type="text/javascript" src="js/newDreamTeam.js"></script>
+
+<jsp:directive.include file="footer.jsp" />

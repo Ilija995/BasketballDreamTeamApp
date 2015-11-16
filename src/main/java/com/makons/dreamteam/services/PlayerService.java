@@ -18,7 +18,6 @@ import java.util.*;
 @Service
 public class PlayerService {
 
-	@Autowired
 	private PlayerRepo playerRepo;
 
 	@Value("${environments.filePaths.players}")
@@ -26,6 +25,11 @@ public class PlayerService {
 
 	@Value("${environments.filePaths.stats}")
 	String statsPath;
+
+	@Autowired
+	public PlayerService(PlayerRepo playerRepo) {
+		this.playerRepo = playerRepo;
+	}
 
 	@PostConstruct
 	public void setup() {

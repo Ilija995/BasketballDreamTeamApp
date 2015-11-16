@@ -14,8 +14,12 @@ import java.util.Map;
 @Controller
 public class NewDreamTeamController {
 
-	@Autowired
 	private PlayerService playerService;
+
+	@Autowired
+	public NewDreamTeamController(PlayerService playerService) {
+		this.playerService = playerService;
+	}
 
 	@RequestMapping("/NewDreamTeam")
 	public String newDreamTeam(Model model) {
