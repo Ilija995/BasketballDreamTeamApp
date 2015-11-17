@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -18,15 +19,18 @@ import java.util.Collection;
 @EnableWebMvcSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Override
-	public void configure(WebSecurity web) {
-		web.ignoring().antMatchers("/css/**");
-	}
+//	@Override
+//	public void configure(WebSecurity web) {
+//		web.ignoring().antMatchers("/css/**");
+//	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 				.authorizeRequests()
+					.antMatchers("/css/**").permitAll()
+					.antMatchers("/login**").permitAll()
+					.antMatchers("/admin**").hasRole("ADMIN")
 					.antMatchers("/**").hasRole("USER")
 					.and()
 				.formLogin()
@@ -38,6 +42,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 					.permitAll()
 					.and()
 				.logout()
+					.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 					.logoutSuccessUrl("/login?logout")
 					.permitAll();
 	}
@@ -51,7 +56,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	public InMemoryUserDetailsManager inMemoryUserDetailsManager() {
 		Collection<UserDetails> users = new ArrayList<>(1);
 		users.add(new User("admin", "admin"));
-		users.stream().forEach(System.out::println);
 		return new InMemoryUserDetailsManager(users);
 	}
 }

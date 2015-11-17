@@ -97,13 +97,6 @@ public class PlayerService {
 		map.put(Position.POWER_FORWARD.toValue(), pf);
 		map.put(Position.CENTER.toValue(), c);
 
-		System.out.println("\nPlayers by position (" + entities.size() +"):");
-		System.out.println("#" + Position.POINT_GUARD.toValue() + "# " + pg.size());
-		System.out.println("#" + Position.SHOOTING_GUARD.toValue() + "# " + sg.size());
-		System.out.println("#" + Position.SMALL_FORWARD.toValue() + "# " + pf.size());
-		System.out.println("#" + Position.POWER_FORWARD.toValue() + "# " + sf.size());
-		System.out.println("#" + Position.CENTER.toValue() + "# " + c.size());
-
 		return map;
 	}
 }

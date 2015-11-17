@@ -20,6 +20,8 @@
 			Username:
 			<input type="text" name="username" id="username"/>
 		</div>
+	</div>
+	<div class="row">
 		<div class="col-sm-2" id="password-slot">
 			Password:
 			<input type="password" name="password" id="password"/>
