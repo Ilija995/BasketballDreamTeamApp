@@ -16,14 +16,18 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-sm-2" id="username-slot">
+		<div class="col-sm-1" id="username-text">
 			Username:
+		</div>
+		<div class="col-sm-1" id="username-input-text">
 			<input type="text" name="username" id="username"/>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-sm-2" id="password-slot">
+		<div class="col-sm-1" id="password-text">
 			Password:
+		</div>
+		<div class="col-sm-1" id="password-input-text">
 			<input type="password" name="password" id="password"/>
 		</div>
 	</div>

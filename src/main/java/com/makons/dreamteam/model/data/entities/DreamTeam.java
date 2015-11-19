@@ -29,7 +29,7 @@ public class DreamTeam extends Entity implements Comparable<DreamTeam> {
 			this.name = name;
 		}
 		else {
-			this.name = "Team" + ++dreamTeamCount;
+			this.name = "Team " + ++dreamTeamCount;
 		}
 	}
 

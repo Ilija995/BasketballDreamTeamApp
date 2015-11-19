@@ -3,21 +3,19 @@ package com.makons.dreamteam.model.data.entities;
 import com.makons.dreamteam.model.data.Authority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class User extends Entity implements Comparable<User>, UserDetails {
 
 	private String password;
+
+	private boolean enabled;
 
 	private boolean accountNonExpired;
 
 	private boolean accountNonLocked;
 
 	private boolean credentialsNonExpired;
-
-	private boolean enabled;
 
 	private Collection<Authority> authorities;
 
@@ -26,7 +24,7 @@ public class User extends Entity implements Comparable<User>, UserDetails {
 	private PriorityQueue<DreamTeam> teams;
 
 	public User(String username, String password) {
-		this(username, password, null);
+		this(username, password, new HashSet<>(Arrays.asList(new Authority("ROLE_USER"))));
 	}
 
 	public User(String username, String password, Collection<Authority> authorities) {
@@ -34,7 +32,6 @@ public class User extends Entity implements Comparable<User>, UserDetails {
 	}
 
 	public User(String username, String password, boolean enabled, boolean accountNonExpired, boolean accountNonLocked, boolean credentialsNonExpired, Collection<Authority> authorities) {
-		super();
 
 		setId(username);
 		this.password = password;
@@ -42,15 +39,17 @@ public class User extends Entity implements Comparable<User>, UserDetails {
 		this.accountNonExpired = accountNonExpired;
 		this.accountNonLocked = accountNonLocked;
 		this.credentialsNonExpired = credentialsNonExpired;
+		this.authorities = authorities;
 		this.score = Integer.MIN_VALUE;
 		this.teams = new PriorityQueue<>();
+	}
 
-		if (authorities == null) {
-			this.authorities = new HashSet<>();
-			this.authorities.add(new Authority("ROLE_USER"));
-		}
-		else {
-			this.authorities = new HashSet<>(authorities);
+	public void addTeam(DreamTeam team) {
+		if (team != null) {
+			teams.add(team);
+			if (team.getScore() > score) {
+				score = team.getScore();
+			}
 		}
 	}
 
@@ -59,9 +58,18 @@ public class User extends Entity implements Comparable<User>, UserDetails {
 		return getId();
 	}
 
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	@Override
 	public String getPassword() {
 		return password;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return enabled;
 	}
 
 	@Override
@@ -80,22 +88,8 @@ public class User extends Entity implements Comparable<User>, UserDetails {
 	}
 
 	@Override
-	public boolean isEnabled() {
-		return enabled;
-	}
-
-	@Override
 	public Collection<Authority> getAuthorities() {
 		return authorities;
-	}
-
-	public void addTeam(DreamTeam team) {
-		if (team != null) {
-			teams.add(team);
-			if (team.getScore() > score) {
-				score = team.getScore();
-			}
-		}
 	}
 
 	public PriorityQueue<DreamTeam> getTeams() {
@@ -116,7 +110,7 @@ public class User extends Entity implements Comparable<User>, UserDetails {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		StringBuilder auth = new StringBuilder();
-		authorities.stream().forEach(authority -> auth.append(authority.getAuthority() + ", "));
+		getAuthorities().stream().forEach(authority -> auth.append(authority.getAuthority() + ", "));
 
 		sb.append("Username: " + getUsername() + "\n")
 			.append("Password: " + getPassword() + "\n")

@@ -2,7 +2,7 @@
 
 <jsp:directive.include file="menu.jsp"/>
 
-<form method="POST" action="/ChooseDreamTeam" onsubmit="submitCheck()">
+<form method="POST" action="/myDreamTeams" onsubmit="submitCheck()">
 	<div class="row" style="padding-top: 0.5cm;">
 		<div class="col-sm-12" id="team_name_text_box">
 			Dream Team name:
@@ -48,6 +48,8 @@
 		<input type="submit" class="btn btn-success submit_dugme" value="Acknowledge your dream team picks"
 		       id="btn_submit"/>
 	</div>
+
+	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 </form>
 
 <div class="player-group" id="player_list">

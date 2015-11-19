@@ -21,7 +21,7 @@ public class NewDreamTeamController {
 		this.playerService = playerService;
 	}
 
-	@RequestMapping("/NewDreamTeam")
+	@RequestMapping("/newDreamTeam")
 	public String newDreamTeam(Model model) {
 		Map<String, List<Player>> sortedPlayers = playerService.getPlayersByPosition();
 		model.addAllAttributes(sortedPlayers);
